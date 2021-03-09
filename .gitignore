@@ -132,3 +132,5 @@ dmypy.json
 .idea/
 .idea
 *.idea
+
+HW1/document_term_file.csv
