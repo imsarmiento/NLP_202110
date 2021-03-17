@@ -122,7 +122,7 @@ venv.bak/
 
 #Datasets
 datasets/*
-!datasets/.gitkeep
+# !datasets/.gitkeep
 
 
 # mypy
