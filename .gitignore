@@ -120,6 +120,11 @@ venv.bak/
 # mkdocs documentation
 /site
 
+#Datasets
+datasets/*
+!datasets/.gitkeep
+
+
 # mypy
 .mypy_cache/
 .dmypy.json
