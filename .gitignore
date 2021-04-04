@@ -141,3 +141,6 @@ dmypy.json
 
 HW1/document_term_file.csv
 .vscode/
+
+#Web Scraping credentials
+PROYECTO/credentials
