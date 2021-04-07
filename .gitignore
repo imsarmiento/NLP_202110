@@ -141,3 +141,5 @@ dmypy.json
 
 HW1/document_term_file.csv
 .vscode/
+
+/node_modules
