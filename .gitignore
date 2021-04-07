@@ -143,3 +143,7 @@ HW1/document_term_file.csv
 .vscode/
 
 node_modules
+
+#Web Scraping credentials
+PROYECTO/credentials
+PROYECTO/data
