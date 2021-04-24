@@ -147,3 +147,10 @@ node_modules
 #Web Scraping credentials
 PROYECTO/credentials
 PROYECTO/data
+
+# HW2
+HW2/datasets
+
+# Stage1
+Stage1/credentials
+Stage1/data
