@@ -154,3 +154,8 @@ HW2/datasets
 # Stage1
 Stage 1/credentials
 Stage 1/data
+Stage 1/api_keys.json
+
+Stage 1/hydrated_tweets_es
+
+*.tsv
