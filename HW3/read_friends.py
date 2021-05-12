@@ -22,7 +22,7 @@ for (dirpath, dirnames, filenames) in walk("./datasets/friends_dataset"):
                 ):
                     try:
                         index = res.span()[1]
-                        line_delimited = [line[:index], line[index:]]
+                        line_delimited = [line[:index-1].strip(), line[index:].strip()]
                         # print(line_delimited)
                         f.append(line_delimited)
                     except:
@@ -30,8 +30,13 @@ for (dirpath, dirnames, filenames) in walk("./datasets/friends_dataset"):
         # break
     break
 
-with open("./docs/dialogs_friends_filter.csv", "w") as filter_dialog:
+with open("./docs/dialogs_friends_filter.csv", "w", encoding="utf-8") as filter_dialog:
     writer = csv.writer(
         filter_dialog, delimiter=",", quotechar='"', quoting=csv.QUOTE_ALL
     )
-    writer.writerows(f)
+    for line in f:
+        try:
+            writer.writerow(line)
+        except:
+            print(line)
+            pass
