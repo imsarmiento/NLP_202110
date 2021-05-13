@@ -5,7 +5,7 @@ __pycache__/
 
 # C extensions
 *.so
-.DS_Store
+*.DS_Store
 
 # Distribution / packaging
 .Python
@@ -153,7 +153,7 @@ PROYECTO/data
 HW2/datasets
 
 # HW3
-HW2/.DS_Store
+HW2/*.DS_Store
 
 # Stage1
 Stage 1/credentials
