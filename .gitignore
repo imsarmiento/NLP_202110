@@ -158,3 +158,20 @@ HW2/*.DS_Store
 # Stage1
 Stage 1/credentials
 Stage 1/data
+Stage 1/api_keys.json
+
+Stage 1/hydrated_tweets_es
+
+*.tsv
+
+Stage 1/hydrated_tweets_es.csv
+
+Stage 1/hydrated_tweets_es.zip
+
+Stage 1/hydrated_tweets_es_short.json
+
+Stage 1/.csv
+
+Stage 1/_short.json
+
+Stage 1/.zip
