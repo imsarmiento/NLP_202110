@@ -6,6 +6,7 @@ __pycache__/
 # C extensions
 *.so
 *.DS_Store
+**/.DS_Store
 
 # Distribution / packaging
 .Python
@@ -175,3 +176,7 @@ Stage 1/.csv
 Stage 1/_short.json
 
 Stage 1/.zip
+
+
+# Stage2
+Stage2/datasets
