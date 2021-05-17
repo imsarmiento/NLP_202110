@@ -5,6 +5,8 @@ __pycache__/
 
 # C extensions
 *.so
+*.DS_Store
+**/.DS_Store
 
 # Distribution / packaging
 .Python
@@ -151,6 +153,9 @@ PROYECTO/data
 # HW2
 HW2/datasets
 
+# HW3
+HW2/*.DS_Store
+
 # Stage1
 Stage 1/credentials
 Stage 1/data
@@ -171,3 +176,7 @@ Stage 1/.csv
 Stage 1/_short.json
 
 Stage 1/.zip
+
+
+# Stage2
+Stage2/datasets
