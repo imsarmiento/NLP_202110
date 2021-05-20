@@ -6,7 +6,7 @@ data = []
 inputFile = 'englishSmall.json'
 with open(inputFile, "r") as f:
     for line in f:
-        data.append(json.loads(line))
+        data.append(json.loads(line.strip()))
 
 df = pd.json_normalize(data)
 arr = list(df['text'])
