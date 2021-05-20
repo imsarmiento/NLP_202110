@@ -3,14 +3,17 @@ import pandas as pd
 from fuzzywuzzy import fuzz
 data = []
 
-inputFile = 'englishSmall.json'
+inputFile = '../Stage2/datasets/english/english100.json'
 with open(inputFile, "r") as f:
     for line in f:
-        data.append(json.loads(line.strip()))
+        'sdasd'
+        json_line = json.loads(line)
+        json_line['text'] = json_line['text'].strip()
+        data.append(json_line)
 
 df = pd.json_normalize(data)
 arr = list(df['text'])
-to_delete = [] 
+to_delete = []
 dict_to_keep = {}
 percentage = 0
 comparisons = (len(arr)**2)/2
@@ -28,9 +31,9 @@ for i in range(len(arr)):
             dict_to_keep[j] = True
         cur_comps += 1
         percentage = (cur_comps)*100/comparisons
-    if int(percentage) % 5 < 1 and int(percentage) != prevEntero:
-        print(str(int(percentage)) + '%')
-        prevEntero = int(percentage)
+        if int(percentage) != prevEntero:
+            print(str(int(percentage)) + '%')
+            prevEntero = int(percentage)
 
 arr_keep = list(dict_to_keep.keys())
 print('Files to filter',len(to_delete))
