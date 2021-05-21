@@ -14,13 +14,21 @@ import umap.umap_ as umap
 import hdbscan
 import pickle as pk
 
-prefix = "./datasets/"
-english_path = prefix + "englishV1.json"
+prefix = "./datasets/english/"
+english_path = prefix + "englishOneLiner.json"
 
 file = open(english_path, "r")
-data = []
-for line in file:
-    data.append(json.loads(line))
+def get_data(file):
+    lines = file.readlines()
+    size = len(lines)
+    if size == 1:
+        return json.loads(lines[0])
+    data = []
+    for line in lines:
+        data.append(json.loads(line))
+    return data
+
+data = get_data(file)
 english_raw = pd.json_normalize(data)
 
 print(english_raw.shape)
@@ -36,11 +44,10 @@ model = SentenceTransformer("distilbert-base-nli-mean-tokens")
 embeddings = model.encode(raw_texts, show_progress_bar=True)
 
 
-print("finalized")
-
 with open(r"./embeddings_en.pickle", "wb") as output_file:
     pk.dump(embeddings, output_file)
 
+print("finalized")
 
 # umap_embeddings = umap.UMAP(n_neighbors=30,
 #                             n_components=5,
