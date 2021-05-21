@@ -180,5 +180,7 @@ Stage 1/.zip
 
 # Stage2
 Stage2/datasets
-
+Stage2/results_punto1
 Stage2/prueba.py
+Stage2/models_hpc
+
