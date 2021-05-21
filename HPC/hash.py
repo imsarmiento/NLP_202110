@@ -1,9 +1,8 @@
 import json
-import pandas as pd
 import re
 
 data = []
-inputFile = '../Stage2/datasets/english/englishV1.json'
+inputFile = '../Stage2/datasets/english/english100.json'
 dict_to_keep = {}
 size = 0
 with open(inputFile, "r") as f:
@@ -27,7 +26,9 @@ with open(inputFile, "r") as f:
             print(str(int(percentage)) + '%')
             prevEntero = int(percentage)
 
-df = pd.json_normalize(data)
 print('size before:',size)
-print('size after:', df.shape[0])
-df.to_json('output1.json', orient='records')
+print('size after:', len(data))
+with open('output.json', 'w') as f:
+    for line in data:
+        json.dump(line, f)
+        f.write('\n')
