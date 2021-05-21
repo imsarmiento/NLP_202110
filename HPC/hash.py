@@ -1,11 +1,19 @@
 import json
 import re
+import sys
+
+if __name__ == "__main__":
+    args = sys.argv[1:]
+    if len(args) != 2:
+        print('sorry not enough arguments')
+        exit()
+    input_file = args[0]
+    output_file = args[1]
 
 data = []
-inputFile = '../Stage2/datasets/english/english100.json'
 dict_to_keep = {}
 size = 0
-with open(inputFile, "r") as f:
+with open(input_file, "r") as f:
     lines = f.readlines()
     percentage = 0
     size = len(lines)
@@ -28,7 +36,7 @@ with open(inputFile, "r") as f:
 
 print('size before:',size)
 print('size after:', len(data))
-with open('output.json', 'w') as f:
+with open(output_file, 'w') as f:
     for line in data:
         json.dump(line, f)
         f.write('\n')

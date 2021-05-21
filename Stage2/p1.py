@@ -13,11 +13,17 @@ from sentence_transformers import SentenceTransformer
 import umap.umap_ as umap
 import hdbscan
 import pickle as pk
+import sys
 
-prefix = "./datasets/english/"
-english_path = prefix + "englishOneLiner.json"
+if __name__ == "__main__":
+    args = sys.argv[1:]
+    if len(args) != 2:
+        print('sorry not enough arguments')
+        exit()
+    input_file = args[0]
+    output_file = args[1]
 
-file = open(english_path, "r")
+file = open(input_file, "r")
 def get_data(file):
     lines = file.readlines()
     size = len(lines)
@@ -44,7 +50,7 @@ model = SentenceTransformer("distilbert-base-nli-mean-tokens")
 embeddings = model.encode(raw_texts, show_progress_bar=True)
 
 
-with open(r"./embeddings_en.pickle", "wb") as output_file:
+with open(output_file, "wb") as output_file:
     pk.dump(embeddings, output_file)
 
 print("finalized")
