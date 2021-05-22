@@ -1,0 +1,18 @@
+#!/bin/bash
+####### Zona de Parámetros de solicitud de recursos a SLURM ################
+#SBATCH --job-name=G5_<NOMBRE_JOB> #Nombre del job
+#SBATCH -p <COLA> #Cola a usar, Default=short
+#SBATCH -N 1 #Nodos requeridos, Default=1
+#SBATCH -n 1 #Tasks paralelos, Default=1
+#SBATCH --cpus-per-task=<CORES (con 30 me sirvio bien)> #Cores requeridos por task, Default=1
+#SBATCH --mem=<RAM (con 30.000 me sirvio bien)> #Memoria en Mb por CPU, Default=2048
+#SBATCH --time=00:20:00 #Tiempo máximo de corrida, Default=2 horas
+#SBATCH --mail-user=<CORREO UNIANDES>
+#SBATCH --mail-type=ALL
+#SBATCH -o OUTPUT.log #Nombre de archivo de salida
+##########################################################################
+module load anaconda/python3.7
+conda init
+. ~/.bashrc
+conda activate G5_proj_env
+python <Nombre del script>.py
