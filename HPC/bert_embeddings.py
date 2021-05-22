@@ -1,27 +1,18 @@
 import json
 import pandas as pd
-import gensim
-from gensim.utils import simple_preprocess
-from gensim.parsing.preprocessing import STOPWORDS
-from nltk.stem import WordNetLemmatizer, SnowballStemmer
-from nltk.stem.porter import *
-import numpy as np
-import nltk
-import ssl
-from sklearn.feature_extraction.text import CountVectorizer
 from sentence_transformers import SentenceTransformer
 import umap.umap_ as umap
-import hdbscan
 import pickle as pk
 import sys
 
 if __name__ == "__main__":
     args = sys.argv[1:]
-    if len(args) != 2:
+    if len(args) != 3:
         print('sorry not enough arguments')
         exit()
     input_file = args[0]
     output_file = args[1]
+    output_file2 = args[2]
 
 file = open(input_file, "r")
 def get_data(file):
@@ -46,18 +37,23 @@ raw_texts = texts_column.values
 raw_texts[0]
 
 
-model = SentenceTransformer("distilbert-base-nli-mean-tokens")
+model = SentenceTransformer("distiluse-base-multilingual-cased-v1")
 embeddings = model.encode(raw_texts, show_progress_bar=True)
 
 
-with open(output_file, "wb") as output_file:
+with open("outputs/"+output_file, "wb") as output_file:
     pk.dump(embeddings, output_file)
 
-print("finalized")
+print("bert embeddings done")
 
-# umap_embeddings = umap.UMAP(n_neighbors=30,
-#                             n_components=5,
-#                             metric='cosine').fit_transform(embeddings)
+umap_embeddings = umap.UMAP(n_neighbors=30,
+                            n_components=5,
+                            metric='cosine').fit_transform(embeddings)
+
+with open("outputs/"+output_file2, "wb") as output_file:
+    pk.dump(umap_embeddings, output_file2)
+
+print("umap embeddings done")
 
 # cluster = hdbscan.HDBSCAN(min_cluster_size=30,
 #                           metric='euclidean',
