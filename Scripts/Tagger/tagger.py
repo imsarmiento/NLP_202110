@@ -12,7 +12,9 @@ with open('./config.yaml', "r+") as file:
     tags = config["tags"]
     source_lang = config["source_lang"]
     target_lang = config["target_lang"]
-    clear = lambda: os.system('cls')
+    
+    def cls():
+        os.system('cls' if os.name=='nt' else 'clear')
 
     def tagInput():
         tag = input("\nPlease select a tag: ")
@@ -52,4 +54,4 @@ with open('./config.yaml', "r+") as file:
                 file.seek(0)
                 file.truncate()
                 yaml.dump(config, file)
-                clear()
+                cls()
