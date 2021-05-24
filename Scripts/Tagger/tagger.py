@@ -22,7 +22,7 @@ with open("./config.yaml", "r+") as file:
     inputFile = f"{filename}.json"
     outputFile = f"{filename}_tagged.json"
     if not os.path.isfile(inputFile):
-        print("You've already started")
+        print("First time creating the files")
         pickleToJson(inputFilePickle)
     translate = config["translate"]
     tags = config["tags"]
