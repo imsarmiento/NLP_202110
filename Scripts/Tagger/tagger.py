@@ -1,23 +1,39 @@
+
 from deep_translator import GoogleTranslator
 import json
 import os
 import yaml
+import pickle as pk
+import pandas as pd
 
-with open('./config.yaml', "r+") as file:
+
+def pickleToJson(path):
+    df = None
+    with open(path, "rb") as output_file:
+        df = pk.load(output_file)
+    jsonFileName = path.replace(".pkl", ".json")
+    df.to_json(jsonFileName, orient="records", lines=True)
+
+#%%
+with open("./config.yaml", "r+") as file:
     config = yaml.safe_load(file)
     filename = config["filename"]
-    inputFile = f'{filename}.json'
-    outputFile = f'{filename}_tagged.json'
+    inputFilePickle = f"{filename}.pkl"
+    inputFile = f"{filename}.json"
+    outputFile = f"{filename}_tagged.json"
+    if not os.path.isfile(inputFile):
+        print("You've already started")
+        pickleToJson(inputFilePickle)
     translate = config["translate"]
     tags = config["tags"]
     source_lang = config["source_lang"]
     target_lang = config["target_lang"]
-    
+
     def cls():
-        os.system('cls' if os.name=='nt' else 'clear')
+        os.system("cls" if os.name == "nt" else "clear")
 
     def tagInput():
-        tag = input("\nPlease select a tag: ")
+        tag = input("\nPlease select a tag:" ) #\nOr type 'save' to save your progress")
         try:
             index = int(tag)
             if index not in range(0, len(tags)):
